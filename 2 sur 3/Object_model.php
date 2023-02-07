@@ -59,10 +59,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function search($mot, $categorie){
-            $result = array();
-            $query = $this->db->query("SELECT *FROM objets WHERE titre LIKE '%%s%' AND idCategorie='%u'", $mot, $categorie);
-            foreach($query->result_array() as $row){
-                $result[] = $row;
+        if ($categorie == null) {
+                $result = array();
+                $sql = $this->db->query("SELECT *FROM objets WHERE titre LIKE '%%s%'", $mot);
+                $query = $this->db->query($sql);
+                $result = $query->row_array();
+            }
+            else{
+                $result = array();
+                $query = $this->db->query("SELECT *FROM objets WHERE titre LIKE '%%s%' AND idCategorie='%u'", $mot, $categorie);
+                foreach ($query->result_array() as $row) {
+                    $result[] = $row;
+                }
             }
             return $result;
         }
