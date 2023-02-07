@@ -33,8 +33,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $query = $this->db->query($sql);
         }
 
-        public function countUser($admin){
-            $sql = sprintf("SELECT count(*) FROM user WHERE estAdmin=%s", $admin);
+        public function countUser(){
+            $sql = sprintf("SELECT count(*) FROM user");
             $query = $this->db->query($sql);
             $result = $query->row_array();
             return $result;
