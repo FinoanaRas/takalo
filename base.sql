@@ -47,8 +47,8 @@ CREATE TABLE photo(
 );
 
 INSERT INTO photo VALUES(1, 1, 't-shirt.jpg');
-INSERT INTO photo VALUES(2, 2, 'short.jpg');
-INSERT INTO photo VALUES(3, 3, 'pneu.jpg');
+INSERT INTO photo VALUES(2, 2, 'pneu.jpg');
+INSERT INTO photo VALUES(3, 3, 'short.jpg');
 INSERT INTO photo VALUES(4, 4, 'salon.jpg');
 
 CREATE TABLE proposition(
@@ -63,3 +63,15 @@ CREATE TABLE proposition(
 INSERT INTO proposition VALUES(1, 1, 3, 5);
 INSERT INTO proposition VALUES(2, 2, 4, 10);
 INSERT INTO proposition VALUES(3, 1, 4, 0);
+
+CREATE TABLE historique(
+    id INT PRIMARY KEY NOT NULL AUTO_INCREMENT,
+    idUser INT NOT NULL,
+    idObjet INT NOT NULL,
+    dateH datetime,
+    foreign key (idUser) references user(id),
+    foreign key (idObjet) references objets(id)
+);
+
+INSERT INTO historique VALUES(1, 3, 4, '2022-02-01 10:10:10');
+INSERT INTO historique VALUES(2, 4, 2, '2022-02-01 10:10:10');
