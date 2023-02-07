@@ -45,7 +45,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         }
 
         public function countEchange($status){
-            $sql = sprintf("SELECT count(*) FROM proposition where status=%u", $status);
+            $sql = sprintf("SELECT count(*) FROM proposition where status='%u'", $status);
             $query = $this->db->query($sql);
             $result = $query->row_array();
             return $result;
